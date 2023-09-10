@@ -12,6 +12,70 @@ import com.product.dto.ProductDto;
 public class CustomerDao {
 	CustomerHelperClass helperClass=new CustomerHelperClass();
 	Connection connection = null;
+	
+	//update by id ================================
+	public boolean updateCustomerById(int id,String name,String email) {
+		connection = helperClass.getconnection();
+		String sql = "UPDATE customer SET name=? , email=? WHERE ID =?";
+		int i =0;
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setString(1, name);
+			preparedStatement.setString(2, email);
+			preparedStatement.setInt(3, id);
+			i = preparedStatement.executeUpdate();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		if (i > 0) {
+			return true;
+		} else {
+			return false;
+		}
+
+	}
+	///get by id
+	public CustomerDto selectCustomerById(CustomerDto customer) {
+		connection = helperClass.getconnection();
+		String sql = "SELECT *  FROM customer WHERE id=?";
+		
+		try {
+			PreparedStatement preparedStatement = connection.prepareStatement(sql);
+			preparedStatement.setInt(1, customer.getCid());
+            ResultSet resultSet =preparedStatement.executeQuery();
+			
+			while(resultSet.next()) {
+				System.out.println(resultSet.getInt(1));
+				System.out.println(resultSet.getString(2));
+				System.out.println(resultSet.getString(3));
+				System.out.println("============================");
+
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return customer;
+		
+	}
+	
 	//get all=======================
 	
 	public CustomerDto getallCustomer(CustomerDto customer) {

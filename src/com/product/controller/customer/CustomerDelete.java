@@ -9,7 +9,7 @@ public class CustomerDelete {
 		// TODO Auto-generated method stub
 //		
 		CustomerService customerservice = new CustomerService();
-		boolean res = customerservice.deleteCustomerById(1);
+		boolean res = customerservice.deleteCustomerById(2);
 		System.out.println(res);
 
 	}

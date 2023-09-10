@@ -15,6 +15,15 @@ public class ProductService {
 	public ProductDto getallProduct(ProductDto product) {
 		return productDao.getallProduct(product);
 	}
+	public ProductDto selectCustomerById(ProductDto product) {
+		return productDao.selectCustomerById(product);
+	}
+	
+	public boolean updateProductById(int id,String name,double d) {
+		return productDao.updateProductById(id, name, d);
+	}
+
+
 
 	
 

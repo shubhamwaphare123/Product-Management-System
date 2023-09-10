@@ -14,6 +14,15 @@ public class CustomerService {
 	public CustomerDto getallCustomer(CustomerDto customer) {
 		return customerDao.getallCustomer(customer);
 	}
+	public CustomerDto selectCustomerById(CustomerDto customer) {
+		return customerDao.selectCustomerById(customer);
+	}
+	
+	public boolean updateCustomerById(int id,String name,String email) {
+		return customerDao.updateCustomerById(id, name, email);
+	}
+
+
 
 
 

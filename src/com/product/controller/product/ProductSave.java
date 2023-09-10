@@ -8,7 +8,7 @@ public class ProductSave {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		ProductDto productDto=new ProductDto();
-		productDto.setPid(6);
+		productDto.setPid(1);
 		productDto.setPname("shoes");
 		productDto.setPrice(200);
 		ProductService productservice=new ProductService();
